@@ -1,0 +1,13 @@
+<h3>{{post.title}}</h3>
+<p>{{post.description}}</p>
+
+<video width="720" height="440" controls>
+  <source src="/Uploads/{{post.video_url}}" type="video/mp4">
+</video>
+
+<h2>Comments</h2>
+  {{#each comments}}
+  <br>
+      <strong>{{this.username}}</strong>: {{this.comment}}
+  {{/each}}
+  <br> <br> 

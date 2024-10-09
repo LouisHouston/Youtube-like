@@ -1,0 +1,188 @@
+body {
+  padding: 25px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  box-shadow: inset 0 0 0 0 #3379ba;
+  color: #54b3d6;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+a.navbarcustom:hover {
+  box-shadow: inset 200px 0 0 0  rgb(71, 5, 71);
+  color: white;
+}
+
+.navbar{
+  display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      color: #fff;
+      padding: 1rem;
+      border-radius: .8rem;
+}
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li {
+  margin-left: 1rem;
+}
+
+.navbar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+}
+
+.navbar-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+button[type=submit]{
+  text-align: center;
+  background-color: whitesmoke;
+  border-radius: 25px;
+  border-color: white;
+  box-shadow: inset 0 0 0 0 #3379ba;
+  transition: color .3s ease-in-out, box-shadow .1s ease-in-out;
+}
+button[type=submit]:hover{
+  box-shadow: inset 1000px 0 0 0 rgb(34, 135, 156);
+  color:white;
+}
+
+label{
+  font-size: 19px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color:antiquewhite;
+}
+
+h3 {
+  font-size: 50px;
+  padding: 0, 0 , 0, 0;
+  margin: 0;
+  color: red;
+  background-image:
+    linear-gradient(
+      red, lavender
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2{
+  font-size: 30px;
+  padding: 0, 0 , 0, 0;
+  margin: 0;
+  color: red;
+  background-image:
+    linear-gradient(
+      red, lavender
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1{
+  font-size: 40px;
+  padding: 0, 0 , 0, 0;
+  margin: 0;
+  color: red;
+  background-image:
+    linear-gradient(
+      red, lavender
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.father{
+  color:lime;
+  font-size: 34px;
+  margin-top: 5%;
+}
+
+body {
+  background-color: rgb(42, 42, 42);
+background: linear-gradient(180deg, #3450c1 10%, #51042b 90%);
+}
+
+#medical {
+  color:rgb(74, 16, 149);
+}
+
+.valid {
+  background-color: green;
+}
+
+.invalid{
+  background:  red ;
+}
+
+img {
+width: 70%;
+height:50%;
+object-fit: cover;}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.column {
+  width: 45%;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.column img {
+  max-width: 100%;
+  height: auto;
+}
+
+#photo-counter {
+  font-size: 50px;
+  background-color: white;
+  width: 60px;
+  border-radius: 5ch;
+  border: 0;
+  padding:5px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.container p {
+  margin: 0;
+}
+
+.post-image {
+  width: 720px;
+  height: 440px;
+}

@@ -1,0 +1,119 @@
+"use strict";
+const mysql = require("mysql2/promise");
+
+function displayWarningMessage(warning) {
+  switch (warning.Code) {
+    case 1007:
+      console.log(`Skipping Database Creation --> ${warning.Message}`);
+      break;
+    case 1050:
+      console.log(`Skipping Table Creation --> ${warning.Message}`);
+      break;
+  }
+}
+
+async function getConnection() {
+  return await mysql.createConnection({
+    host: "localhost",
+    user: "root", //Your DB username
+    password: "root", //Your DB password
+  });
+}
+
+async function makeDatabase(connection) {
+  //TODO make sure to change yourdbnamehere
+  const [result, _] = await connection.query(
+    "CREATE DATABASE IF NOT EXISTS serverr;"
+  );
+  if (result && result.warningStatus > 0) {
+    const [warningResult, _] = await connection.query("SHOW WARNINGS");
+    displayWarningMessage(warningResult[0]);
+  } else {
+    console.log("Created Database!");
+  }
+}
+
+async function makeUsersTable(connection) {
+  const [result, _] = await connection.query(
+    `
+    CREATE TABLE IF NOT EXISTS users (
+      id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+      username VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      password VARCHAR(255) NOT NULL,
+      PRIMARY KEY (id)
+    );
+    `
+  );
+
+  if (result && result.warningStatus > 0) {
+    const [warningResult, _] = await connection.query("SHOW WARNINGS");
+    displayWarningMessage(warningResult[0]);
+  } else {
+    console.log("Created Users Table!");
+  }
+}
+
+
+async function makePostsTable(connection) {
+  const [result, _] = await connection.query(`
+    CREATE TABLE IF NOT EXISTS video_posts (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      user_id INT NOT NULL,
+      title VARCHAR(255) NOT NULL,
+      description TEXT NOT NULL,
+      video_url VARCHAR(255) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    );
+  `);
+  if (result && result.warningStatus > 0) {
+    const [warningResult, _] = await connection.query("SHOW WARNINGS");
+    displayWarningMessage(warningResult[0]);
+  } else {
+    console.log("Created Video Posts and Comments Tables!");
+  }
+}
+
+async function makeCommentsTable(connection) {
+  const [result, _] = await connection.query(
+    // Comments Table SQL Goes here
+    `  CREATE TABLE IF NOT EXISTS comments (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      user_id INT NOT NULL,
+      post_id INT NOT NULL,
+      comment TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (post_id) REFERENCES video_posts(id) ON DELETE CASCADE
+    );
+    `
+  );
+  if (result && result.warningStatus > 0) {
+    const [warningResult, _] = await connection.query("SHOW WARNINGS");
+    displayWarningMessage(warningResult[0]);
+  } else {
+    console.log("Created Comments Table!");
+  }
+}
+
+(async function main() {
+  let connection = null;
+  try {
+    connection = await getConnection();
+    await makeDatabase(connection); // make DB
+    //TODO make sure to change yourdbnamehere
+    await connection.query("USE Serverr"); // set new DB to the current DB
+    await makeUsersTable(connection); // try to make user table
+    await makePostsTable(connection); // try to make posts table
+    await makeCommentsTable(connection); // try to make comments table
+    connection.close();
+    return;
+  } catch (error) {
+    console.error(error);
+    if (connection != null) {
+      connection.close();
+    }
+  }
+})();

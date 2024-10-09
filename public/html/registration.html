@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/application//public/css/style.css">
+</head>
+
+<nav>
+    <a href="/application/public/html/Index.html">Home</a> |
+    <a href="/application/public/html/login.html">Login</a> |
+    <a href="/application/public/html/registration.html">Register</a> |
+    <a href="/application/public/html/postvideo.html">Post Video</a> |
+    <a href="/application/public/html/viewpost.html">View Post</a> |
+    <a href="/application/public/html/profile.html">Profile</a>
+</nav>
+
+<body>
+    <h3> Register </h3>
+    <form onsubmit="submit(event)"; return false;>
+        <label >Username:</label>
+        <input type="text" id="username-input" class="form-input">
+        <span id="username-error"></span>
+        <br><br>
+
+
+        <label >Email:</label>
+        <input type="email" id="email-input" class="form-input" >
+        <span id="email-error"></span>
+        <br><br>
+
+        <label >Password:</label>
+        <input type="password" id="password-input" class="form-input">
+        <span id="password-error"></span>
+        <br><br>
+
+        <label >Confirm Password:</label>
+        <input type="password" id="confirmpassword-input" class="form-input">
+        <span id="confirmpass-error"></span>
+        <br><br>
+
+        13+ years of age?: <input type="checkbox" id="checkkbox"> 
+        <br><br>
+
+        <a  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"  target=”_blank”> Accept TOS & Privacy Rules:</a>
+        <input type="checkbox" id="TOSbox" class="form-input">
+        <br><br>
+
+        <button type="submit" id="submitbtn"  class="form-input" disabled>Submit Registration Form</button>     
+    </form>
+      <script src="../js/script.js"></script>
+</body>
+</html>
+

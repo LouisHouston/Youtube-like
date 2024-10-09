@@ -1,0 +1,21 @@
+<br><br><br>
+
+<h3>{{user.username}}</h3>
+<br><br><br>
+
+<h2>Email: {{user.email}}</h2>
+<br><br><br>
+
+<h3>User's post history</h3>
+<br><br><br>
+
+<ul>
+  {{#each video_posts}}
+      <h2>{{this.title}} - {{this.description}}</h2>
+      <video controls>
+        <source src="/Uploads/{{this.video_url}}" type="video/mp4">
+      </video>
+      <button onclick="deletePost('{{this.id}}')">Delete Post</button>
+  {{/each}}
+</ul>
+

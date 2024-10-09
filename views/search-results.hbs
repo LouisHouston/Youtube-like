@@ -1,0 +1,16 @@
+<h1>Search Results for "{{query}}"</h1>
+
+{{#if video_posts.length}}
+  <ul>
+    {{#each video_posts}}
+      <li>{{this.title}} - {{this.description}}</li>
+      <li>
+        <a href="/view-post/{{this.id}}">
+          <img src="/uploads/{{this.id}}.jpg">
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No results found for "{{query}}"</p>
+{{/if}}

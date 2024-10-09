@@ -1,0 +1,70 @@
+<br><br><br>
+<h3>Register</h3>
+<form id="registration-form">
+  <br><br><br>
+  <label for="username-input">Username:</label>
+  <input type="text" id="username-input" name="username">
+
+  <br><br><br>
+  <label for="email-input">Email:</label>
+  <input type="email" id="email-input" name="email">
+
+  <br><br><br>
+  <label for="password-input">Password:</label>
+  <input type="password" id="password-input" name="password">
+
+
+  <br><br><br>
+  
+  <label for="confirm-password-input">Confirm Password:</label>
+  <input type="password" id="confirm-password-input" name="confirm-password">
+
+  <br><br><br>
+  <label for="age-checkbox">13+ years of age?:</label>
+  <input type="checkbox" id="age-checkbox" name="age">
+
+  <br><br><br>
+  <label for="tos-checkbox">
+    Accept TOS & Privacy Rules:
+    <a href="https://www.example.com/tos" target="_blank">TOS</a>
+  </label>
+  <input type="checkbox" id="tos-checkbox" name="tos">
+  <br><br><br>
+
+ <button type="submit">Submit Registration Form</button>
+</form>
+<script>
+  const registrationForm = document.getElementById('registration-form');
+
+  registrationForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(registrationForm);
+    const username = formData.get('username');
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const confirmPassword = formData.get('confirm-password');
+    const age = formData.get('age');
+    const tos = formData.get('tos');
+
+    const response = await fetch('/Register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        confirmPassword,
+        age,
+        tos,
+      }),
+    });
+
+    if (response.ok) {
+      alert('Registration successful!');
+      window.location.href = '/Profile';
+    } else {
+      alert('Registration failed!');
+    }
+  });
+</script>

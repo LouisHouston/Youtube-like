@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <ul class="navbar-menu">
+    <li>     <img  src="/public/favicon.ico" sizes="400x400" ></li>
+    <li><a class="navbarcustom"href="/">Home</a></li>
+    {{#if user}}
+
+    <li><a class="navbarcustom" href="/Logout"> Logout</a></li>
+    {{else}}
+    <li><a class="navbarcustom" href="/Login">Login</a></li>
+    {{/if}}
+    <li><a class="navbarcustom" href="/Register">Register</a></li>
+    <li><a class="navbarcustom" href="/PostVideo">Post Video</a></li>
+    {{#if user}}
+      <li><a class="navbarcustom" href="/Profile">{{user.username}}</a></li>
+    {{else}}
+      <li><a class="navbarcustom" href="/Profile">Profile</a></li>
+    {{/if}}
+    <li> <form action="/search" method="get">
+  <input type="text" name="q" placeholder="Search videos...">
+  <button type="submit" class="navbarcustom">Search</button>
+</form></li>
+  </ul>
+</nav>
